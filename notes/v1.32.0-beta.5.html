@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Macterm 1.32.0-beta.5 release notes</title>
+  <style>
+    body { font: 13px -apple-system, system-ui, sans-serif; color: #1d1d1f; padding: 16px; margin: 0; }
+    @media (prefers-color-scheme: dark) { body { color: #f5f5f7; background: transparent; } a { color: #6cb4ff; } }
+    h1, h2, h3 { margin-top: 0.6em; margin-bottom: 0.3em; }
+    h1 { font-size: 1.3em; } h2 { font-size: 1.15em; } h3 { font-size: 1em; }
+    p, ul, ol { margin: 0.4em 0; }
+    ul, ol { padding-left: 1.4em; }
+    code { background: rgba(127, 127, 127, 0.15); padding: 0 4px; border-radius: 3px; font: 12px ui-monospace, monospace; }
+    pre { background: rgba(127, 127, 127, 0.12); padding: 8px; border-radius: 4px; overflow-x: auto; }
+    pre code { background: transparent; padding: 0; }
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+<h2>What's New</h2>
+<ul>
+<li>Custom palettes are now extensions. In Settings → Extensions, you can install the extensions from the Macterm repository with one click: Kubernetes, Git, Docker, SSH and Claude Code. You can search them and filter them by installed. (#527, #531, #541, #550)</li>
+<li>When the repository changes an installed extension, its card shows an Update button. Turn on Update extensions automatically to apply an update without a click. Macterm never replaces an extension that you changed without asking first. (#556, #563)</li>
+<li>An extension can bundle its own icon, and each of its palettes shows that icon. The Docker, Kubernetes, Git and Claude Code extensions show the logo of their tool. (#555, #556)</li>
+<li>A palette or a menu item can say when it cannot be used. For example, the Kubernetes palette mutes its cluster screens while the cluster is down. (#526)</li>
+<li>Worktrees is now a screen of the Git extension, next to Branches. A palette action can open a shell or run a command in a directory that it names with <code class="notranslate">cwd:</code>. (#564)</li>
+<li>The SSH extension can add a host as a remote project. (#573)</li>
+<li>Capture Pane copies the focused pane to the clipboard as an image, with no window blur and nothing from behind the window. (#554)</li>
+<li>Capture Palette Screenshot makes a screenshot of the command palette at the size that extension screenshots use. (#528, #579)</li>
+<li>Settings → Updates has one toggle, Update automatically. When a background download is ready, the toolbar shows Restart to Update, and the first launch after an update shows a toast with the new version. (#558, #560, #562)</li>
+<li>The caption under Update channel describes the channel that you select. (#530)</li>
+<li>Each row in Settings → Keymaps has one menu for Global and Pass to TUI. To clear a keybind, click it and press Delete. Keymaps also opens faster. (#566, #581)</li>
+<li>Each window keeps its open project sections in the sidebar across a relaunch. (#559)</li>
+<li>A toast with a long message stays up longer, so that you can read it. (#580)</li>
+<li>The text in Settings, alerts, messages and <code class="notranslate">macterm --help</code> is shorter and uses one word for one thing. Settings → General → Text Files is now Opening Text Files. (#537, #538, #565, #575, #584)</li>
+</ul>
+<h2>Fixes</h2>
+<ul>
+<li>After a quit and a relaunch, a pane's scrollback keeps its width and its last lines. Before, it could come back wrapped at a narrow width, with lines missing. (#578)</li>
+<li>A launching window shows its text from the first frame, not rows of colored blocks. (#557)</li>
+<li>Each window keeps its sidebar width across a relaunch. (#553)</li>
+<li>A project with no tabs stays empty after a relaunch. Selecting it no longer creates a tab. (#548)</li>
+<li>The command palette opens faster, and the first keystroke into an empty search no longer lags. (#561, #569)</li>
+<li>When you use the keyboard to move through the palette, the selected row stops clear of the edge again. (#561)</li>
+<li>Each palette screen and each new search starts at the top of its list. (#543, #546)</li>
+<li>A palette screen that is not available keeps its icon on its row. (#525)</li>
+</ul>
+<h2>Notes</h2>
+<ul>
+<li>Macterm reads palettes only from extensions. It no longer reads <code class="notranslate">~/.config/macterm/palettes/</code>. To keep a palette of your own, put it in an extension: a folder in <code class="notranslate">~/.config/macterm/extensions/</code> with an <code class="notranslate">extension.yaml</code> and a <code class="notranslate">palettes/</code> folder. <code class="notranslate">authors:</code> is optional.</li>
+<li>The built-in Worktrees screen is gone. Install the Git extension to get it back.</li>
+<li>Macterm now checks for updates each day for everyone, also if you turned off the old check toggle. The check only reads the update feed.</li>
+</ul>
+<p>Thanks to <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/thdxg/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/thdxg">@thdxg</a> for this release.</p>
+</body>
+</html>
