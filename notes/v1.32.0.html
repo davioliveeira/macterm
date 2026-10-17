@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Macterm 1.32.0 release notes</title>
+  <style>
+    body { font: 13px -apple-system, system-ui, sans-serif; color: #1d1d1f; padding: 16px; margin: 0; }
+    @media (prefers-color-scheme: dark) { body { color: #f5f5f7; background: transparent; } a { color: #6cb4ff; } }
+    h1, h2, h3 { margin-top: 0.6em; margin-bottom: 0.3em; }
+    h1 { font-size: 1.3em; } h2 { font-size: 1.15em; } h3 { font-size: 1em; }
+    p, ul, ol { margin: 0.4em 0; }
+    ul, ol { padding-left: 1.4em; }
+    code { background: rgba(127, 127, 127, 0.15); padding: 0 4px; border-radius: 3px; font: 12px ui-monospace, monospace; }
+    pre { background: rgba(127, 127, 127, 0.12); padding: 8px; border-radius: 4px; overflow-x: auto; }
+    pre code { background: transparent; padding: 0; }
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+<h2>What's New</h2>
+<ul>
+<li><strong>Extensions</strong>: install palettes for Git, SSH, Docker, Kubernetes and Claude Code from Settings → Extensions. Each card shows the screenshots and the icon of its extension. (#527, #528, #531, #541, #547, #550, #555, #594)</li>
+<li>An installed extension gets an Update button when the repository changes it. Update extensions automatically is on by default, and it never replaces a copy that you changed. (#556, #563, #587)</li>
+<li>The command palette has screens that nest, and a Files screen that searches the files of the project by name or part of a path. (#511, #512, #519, #520, #525)</li>
+<li>Extension palettes can show fixed rows above a listing, give a row a ⌥ action, mute a screen that cannot be used, and open a terminal in a directory. Their commands run in the same way in every shell, and a <code class="notranslate">run:</code> action does not go into the history of your shell. (#518, #521, #522, #526, #564)</li>
+<li>The Git extension lists the worktrees of a project, and the SSH extension can add a host as a remote project. (#505, #564, #573)</li>
+<li>The Password Manager screen of the command palette types a saved password into the focused pane, also at prompts that Macterm cannot detect. You can bind it to a keybind. (#500, #502)</li>
+<li>Every search in the app uses one fzf-style ranking, and the palette shows the letters that matched in bold. (#506, #508)</li>
+<li>Capture Pane copies the focused pane to the clipboard as an image, with no window blur and nothing from behind the window. (#554)</li>
+<li>Capture Palette saves the open command palette as a screenshot at the size that extensions use. (#528, #592)</li>
+<li>Macterm can be the default app for text files. It opens them in the editor of <code class="notranslate">$VISUAL</code> or <code class="notranslate">$EDITOR</code>, and ⌘-click on a <code class="notranslate">path:line</code> in a pane opens the file at that line. (#484, #485, #565)</li>
+<li>Drag a folder onto the sidebar to add it as a project. (#489)</li>
+<li>Right-click the toolbar to hide it or to move the tab switcher. View → Hide Toolbar does the same. (#482)</li>
+<li><code class="notranslate">macterm tab new --no-focus</code> and <code class="notranslate">macterm pane split --no-focus</code> start a terminal in the background and do not move the focus. (#499)</li>
+<li>Macterm writes <code class="notranslate">~/.config/macterm/config.ghostty</code> on first launch. It lists the defaults of Macterm as comments, and a key that you set in it applies to Macterm only. (#588, #590)</li>
+<li>Snap to whole row (Settings → Animations) scrolls a whole row at a time, and each row slides into place, as in <code class="notranslate">less</code>. (#503, #517)</li>
+<li>The smooth cursor now moves the text under it too, and the cursor trail costs nothing while the cursor does not move. (#490, #493)</li>
+<li>Splits animate with a shorter tail, and the keyboard Resize Split commands slide the divider. (#494, #495)</li>
+<li>Panes follow the mouse in the same way as Ghostty.app: hover in a window that is not in front, Look Up with a force click, the ⌃-click menu and <code class="notranslate">focus-follows-mouse</code>. (#491)</li>
+<li>Each window opens again at its size and position, with its sidebar width and its open project sections. (#498, #553, #559)</li>
+<li>Settings → Updates has one Update automatically toggle. After a download in the background, the toolbar shows Restart to Update, and the first launch after an update shows the new version. (#530, #558, #560, #562, #575)</li>
+<li>Settings → Keymaps puts Global and Pass to TUI in one menu on each row. Settings sections link to their docs, and captions are shorter. (#488, #501, #566, #584)</li>
+</ul>
+<h2>Fixes</h2>
+<ul>
+<li>An OSC 8 link no longer opens a program. A link with a custom scheme asks before it opens. (#483)</li>
+<li>After a relaunch, the scrollback of a pane keeps its line width, and no lines are missing. (#578)</li>
+<li>A launching window shows its text at once, not rows of colored blocks. (#557)</li>
+<li>Right click works in Helix and other crossterm programs after a relaunch. (#492)</li>
+<li>A new pane no longer shows a <code class="notranslate">session "…" created</code> line. (#487)</li>
+<li>A project with no tabs stays empty after a relaunch. (#548)</li>
+<li>A dead remote pane closes on any key, also when the host refuses the connection. (#598)</li>
+<li>The password bubble comes up about 0.4 s after a prompt, not 1 s or more. (#596)</li>
+<li>In a second window on the same tab, splits animate and Split Automatically picks the correct direction. (#524)</li>
+<li>The command palette opens faster. Each screen and each new search starts at the top, and search results are always current. (#543, #546, #561, #569)</li>
+<li>Capture Palette works when you allow Screen Recording while Macterm runs, and its message shows the full fix. (#579, #589)</li>
+<li>A toast stays up longer when its text is longer. (#580)</li>
+</ul>
+<h2>Notes</h2>
+<ul>
+<li>Macterm reads palettes only from extensions. It no longer reads <code class="notranslate">~/.config/macterm/palettes/</code>. To keep a palette of your own, put it in an extension folder in <code class="notranslate">~/.config/macterm/extensions/</code>. See the Extensions docs.</li>
+<li>Macterm no longer reads <code class="notranslate">~/.config/macterm/projects/pinned.yaml</code>. Every 1.31 release moved this file to <code class="notranslate">~/.config/macterm/pinned.yaml</code>. If you skip from an older version, move the file yourself.</li>
+</ul>
+<p>Thanks to <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/thdxg/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/thdxg">@thdxg</a> and <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/timchesney/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/timchesney">@timchesney</a> for this release.</p>
+</body>
+</html>
